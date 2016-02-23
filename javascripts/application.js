@@ -1,21 +1,26 @@
 angular.module("hawkins", ["ionic", "firebase", "chart.js"])
-  .constant("root", new Firebase("https://hawkins.firebaseio.com"))
+
+  .constant("root", new Firebase("https://crackling-fire-9717.firebaseio.com"))
+
   .filter('ansiHtml', function($sce) {
     return function(item) {
       var filter = new Filter();
       return $sce.trustAsHtml(filter.toHtml(item));
     };
   })
+
   .filter('reverse', function() {
     return function(items) {
       return items && items.slice().reverse();
     };
   })
+
   .filter('branch', function() {
     return function(item) {
       return item && item.replace(/^refs\/heads\//, "");
     };
   })
+
   .filter("time", function() {
     return function(input) {
       input /= 1000
@@ -28,6 +33,7 @@ angular.module("hawkins", ["ionic", "firebase", "chart.js"])
       return z(minutes) + ":" + z(seconds);
     };
   })
+
   .directive('autoscroll', function() {
     return {
       link: function(scope, element, attrs) {
@@ -47,9 +53,11 @@ angular.module("hawkins", ["ionic", "firebase", "chart.js"])
       }
     };
   })
+
   .config(function($locationProvider, $urlRouterProvider, $stateProvider) {
     $locationProvider.html5Mode({enabled: true, requireBase: false});
     $stateProvider
+
       .state("show", {
         url: "/builds/:id",
         templateUrl: "/templates/builds/show.html",
@@ -100,6 +108,7 @@ angular.module("hawkins", ["ionic", "firebase", "chart.js"])
           };
         }
       })
+
       .state("index", {
         url: '/builds',
         templateUrl: "/templates/builds/index.html",
@@ -118,8 +127,10 @@ angular.module("hawkins", ["ionic", "firebase", "chart.js"])
           });
         }
       });
+
     $urlRouterProvider.otherwise("/builds");
   })
+
   .run(function($rootScope, $firebase, root, $state) {
     $rootScope.builds = $firebase(root.child("builds").limitToLast(50)).$asArray();
     $rootScope.pushes = $firebase(root.child("pushes")).$asArray();
