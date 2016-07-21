@@ -1,6 +1,6 @@
 angular.module("hawkins", ["ionic", "firebase", "chart.js"])
 
-  .constant("root", new Firebase("https://crackling-fire-9717.firebaseio.com"))
+  .constant("root", new Firebase("https://hawkins-camaloon.firebaseio.com"))
 
   .filter('ansiHtml', function($sce) {
     return function(item) {

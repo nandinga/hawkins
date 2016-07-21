@@ -1,16 +1,19 @@
 {
-  "firebase": "crackling-fire-9717",
-  "public": ".",
-  "rules": "rules.json",
-  "rewrites": [
-    {
-      "source": "**",
-      "destination": "/index.html"
-    }
-  ],
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ]
+  "hosting": {
+    "public": ".",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+},
+  "database": {
+    "rules": "rules.json"
+  }
 }
