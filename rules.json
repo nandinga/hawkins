@@ -4,7 +4,7 @@
     ".write": true,
     "pushes": {
       "$item": {
-        ".validate": "newData.hasChildren() && newData.child('pusher').exists() && newData.child('deleted').val() === false && !newData.child('head_commit').child('message').val().contains('[ci skip]')"
+        ".validate": "newData.hasChildren() && newData.child('pusher').exists() && newData.child('deleted').val() === false && !newData.child('head_commit').child('message').val().contains('[ci skip]') && !newData.child('head_commit').child('message').val().contains('[skip ci]')"
       }
     }
   }
